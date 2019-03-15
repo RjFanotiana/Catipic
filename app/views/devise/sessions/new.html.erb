@@ -1,0 +1,35 @@
+<div style="background-image:url(../font.jpg);background-size: cover;height: 880px;">
+  <div class="card col-3" style="background-color:rgba(0,0,0,0.2);margin:200px 100px;" >
+   <%= render "devise/shared/error_messages" %>
+    <div class="login">
+      <div class="heading">
+        <center><h2 style="font-size: 50px;font-weight: bolder;color:#f6e58d;;">Log in</h2></center>
+       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+       <%= render "devise/shared/error_messages", resource: resource %>
+       <h5 style="color: #fbc531">Email</h5>
+       <div class="form-group">
+         <%= f.email_field :email, autofocus: true, autocomplete: "email" ,:class =>'form-control',:style =>"background-color: transparent;border:none;border-bottom:solid white 1px;color:white;" %>
+       </div>
+       <br>
+           <h5 style="color: #fbc531">Password</h5>
+    <div class="form-group">
+       <%= f.password_field :password, autocomplete: "current-password",:class =>'form-control',:style =>"background-color: transparent;border:none;border-bottom:solid white 1px;color:white;" %>
+    </div>
+
+    <% if devise_mapping.rememberable? %>
+    <br>
+    <%= f.check_box :remember_me %>
+    <%= f.label :remember_me,:style=>"color: #fbc531" %>
+    <% end %>
+    <br>
+    <br>
+    <%= f.submit "Log in",:class=>'btn_sign_up' %>
+    <% end %>
+     <br>
+  
+    <br>
+    <p>Have no account?
+    <%= link_to 'Sign Up',new_user_registration_path ,style:'font-size:20px; color:#f6e58d;font-weight: bold;'%></p>
+  </div>
+ </div>
+</div>

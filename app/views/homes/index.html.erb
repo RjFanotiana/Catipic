@@ -1,0 +1,30 @@
+
+<input type="hidden" id="hidden" name="" value="<%=@cart%>">
+<div class="wrapper">
+    <div class="page-header clear-filter" filter-color="orange">
+      <div class="page-header-image" data-parallax="true" style="background-image:url('../wrapper.jpg');">
+      </div>
+      <div class="container">
+        <div class="content-center brand" style="margin-top: 350px;">
+          <h2 style="font-size: 70px;font-style: italic;"> Besoin de photo de chatons?Nous sommes là pour vous offrir les meilleur photos de chats qui existe au monde!</h2>
+        </div>
+      </div>
+    </div>
+ 
+    <div style="background-color: #ecf0f1">
+         <br>
+   <div class="row text-center  ml-5 mt-5">
+    <% @items.each do |test|%>
+    <div class="card col-md-3  m-5">
+      <h4 class="service-heading">  <%= test.title%></h4>
+      <%if test.picture.attached?%>
+      <a class="product" href="/homes/<%= test.id%>">
+      <%= image_tag test.picture, alt: 'pic', :class => "picture" ,:style =>'width:30em;'%></a>
+      <%end%>
+      <br><br>
+    </div>
+    <% end %>
+  
+  </div>
+</div>
+</div>

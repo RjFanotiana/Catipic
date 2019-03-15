@@ -1,0 +1,66 @@
+  <input type="hidden" id="hidden" name="" value="<%=@cart_count%>">
+<div style="background-image: url(../font5.jpg);background-size: cover;height:800px;">
+	<div class="container" >
+		<br><br><br><br><br><br><br><br><br><br><br><br>
+		<div class="jumbotron" style="background-color:rgba(0,0,0,0.3); color: white;">
+			<h1 class="display-4" style="color: #f39c12"> Vos commandes</h1>
+			<hr class="my-4">
+			<p>Vous pouvez modifier vos commandes et les validez ici :</p>
+			<p>Vous avez mis <%= @cart.count%>  photo dans le panier veuiller precicez leur quantite(s):</p>
+			<table class="table">
+				<thead style=" font-size:20px;color: #e67e22">
+					<tr>
+						<th>Nom produit</th>
+						<th>Photo</th>
+						<th>Quantite(s)</th>
+						<th>Prix</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @cart.each do |cart| %>
+					<tr>
+						<td><%= cart.item.title %></td>
+						<td>Photo</td>
+						<td><select id="monselect">
+							<% for i in 1..5 %>
+							<option value="valeur1"><%= i%></option> 
+							<% end%>
+						</select></td>
+						<td class="prix"><%= cart.item.price%>$</td>
+					</tr>
+					<% end %>
+					<tr>
+						<td><b>Total produit</b></td>
+						<td><em ><%= @cart.count%></em></td>
+						<td class="total"></td>
+					</tr>
+				</tbody>
+			</table>
+			
+			<%= form_tag stripe_path do %>
+<button type="submit" class="btn btn-warning" style="float:right;">Valider l'achat</button>
+<% end %>
+		</div>
+	</div>
+	<br><br><br><br><br>
+	</div>
+	
+	<script type="text/javascript">
+     document.getElementById("index").textContent = document.getElementById("hidden").value
+		let prix =document.getElementsByClassName('prix');
+		let value =document.getElementsByClassName('quantite')[0]
+		let total =document.getElementsByClassName('total')[0]
+		let array =[];
+		for (var i = 0; i < prix.length; i++) {
+			let prx =parseFloat(prix[i].innerHTML)
+			array.push(prx)
+		};
+		let sum = 0
+		sum = parseFloat(sum)
+		array.forEach(myFunction)
+		function myFunction(item){
+			sum += item;
+			total.innerHTML =sum
+		}
+		console.log(document.getElementById('monselect')[0].innerHTML)
+	</script>

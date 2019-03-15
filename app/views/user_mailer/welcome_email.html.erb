@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+
+
+
+	<h1>Salut <%= @user.name %> et merci pour votre commandes !</h1>
+	
+	<p>
+		vous trouver ci dessous vos photos : <% @cart.each do |cart| %>
+		<%= cart.item.title %> | <%= cart.item.price%>
+		 <a href="#">Votre photo</a>
+		<hr/>
+		<% end %>
+	</p>
+
+	<p> À très vite sur CatiPic !
+</body>
+</html>
+

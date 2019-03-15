@@ -1,0 +1,63 @@
+
+           <nav class="navbar navbar-expand-lg  fixed-top " color-on-scroll="e0e0e0" style="background-color: rgba(0,0,0,0.3);" >
+           
+           		<div class="navbar-translate">
+           			<a class="navbar-brand" href="/" rel="tooltip"  data-placement="bottom" >
+           				<img src="../dessin.png" width="10%">
+           			</a>
+           			<button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+           				<span class="navbar-toggler-bar top-bar"></span>
+           				<span class="navbar-toggler-bar middle-bar"></span>
+           				<span class="navbar-toggler-bar bottom-bar"></span>
+           			</button>
+           		</div>
+           		<div class="collapse navbar-collapse justify-content-end" id="navigation" data-nav-image="./assets/img/blurred-image-1.jpg">
+           			<ul class="navbar-nav">
+                  <% unless current_user %>
+
+           				<li class="nav-item">
+           					<a class="nav-link" rel="tooltip"  data-placement="bottom" href="/users/sign_up" style="font-size:17px;">
+           						S'inscrire
+           					</a>
+           				</li>
+           				<li class="nav-item">
+           					<a class="nav-link" rel="tooltip"  data-placement="bottom" href="/users/sign_in" style="font-size:17px;">
+           					Se_connecter
+           					</a>
+           				</li>
+                  
+                  <li>
+                    <a href="/show_cart" >
+                      <i class='fa fa-shopping-basket fa-2x' ><i id="index">0</i> </i>
+                    </a>
+
+                  </li>
+                  <% else %>
+                  <%if current_user.email %>
+                   <%if current_user.email == "admin@admin.com" %>
+                    <li class="nav-item">
+                    <a class="nav-link " rel="tooltip"  data-placement="bottom" href="/items/new">
+                      new
+                    </a>
+                  </li>
+                   <li class="nav-item">
+                    <a class="nav-link" rel="tooltip"  data-placement="bottom" href="<%= destroy_user_session_path %>" data-method="delete">
+                      deconecter
+                    </a>
+                  </li>
+                  <%else%>
+                   <li class="nav-item">
+                    <a class="nav-link " rel="tooltip"  data-placement="bottom" href="<%= destroy_user_session_path %>" data-method="delete" style="font-size: 15px;">
+                      deconecter
+                    </a>
+                  </li>
+                   <li>
+                    <a href="/show_cart" >
+                      <i class='fa fa-shopping-basket fa-2x' ><i id="index"><%@cart%></i> </i>
+                    </a>
+                  <%end%>
+                  <%end%>
+                  <%end%>
+           			</ul>
+           		</div>
+  </nav>
